@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profile>
+  <user>
+    <email>admin@admin</email>
+    <password>admin</password>
+    <status>active</status>
+    <cart/>
+  </user>
+  <user>
+    <email>test@test</email>
+    <password>test</password>
+    <status>active</status>
+    <cart>
+      <item>
+        <prodCartId>16</prodCartId>
+        <prodCartName>Chocolate Chip Cookie</prodCartName>
+        <prodCartPrice>30</prodCartPrice>
+        <prodCartQuan>94</prodCartQuan>
+        <prodCartImg>images/dessertChocolateChipCookie.png</prodCartImg>
+      </item>
+    </cart>
+  </user>
+  
+</profile>
