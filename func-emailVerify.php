@@ -22,8 +22,8 @@
         $mail->isSMTP();
 $mail->Host = 'smtp.hostinger.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'you@yourdomain.com';
-$mail->Password = 'your_hostinger_email_password';
+$mail->Username = 'raizeningalla@gmail.com';
+$mail->Password = 'dyva pkub kjun udyk';
 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 $mail->Port = 465;
 
