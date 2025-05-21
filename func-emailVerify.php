@@ -10,14 +10,22 @@
     $verificationCode = rand(100000, 999999);
 
     $mail = new PHPMailer(true);
-    try {
+    // try {
+    //     $mail->isSMTP();
+    //     $mail->Host = 'smtp.gmail.com';
+    //     $mail->SMTPAuth = true;
+    //     $mail->Username = 'raizeningalla@gmail.com';
+    //     $mail->Password = 'dyva pkub kjun udyk'; // App password
+    //     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    //     $mail->Port = 465;
+
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'raizeningalla@gmail.com';
-        $mail->Password = 'dyva pkub kjun udyk'; // App password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port = 465;
+$mail->Host = 'smtp.hostinger.com';
+$mail->SMTPAuth = true;
+$mail->Username = 'you@yourdomain.com';
+$mail->Password = 'your_hostinger_email_password';
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+$mail->Port = 465;
 
         $mail->setFrom('raizeningalla@gmail.com', 'kapeShop Support');
         $mail->addAddress($email); // ✅ Set the recipient
