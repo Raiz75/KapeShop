@@ -1,46 +1,39 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+    require 'PHPMailer/src/Exception.php';
+    require 'PHPMailer/src/PHPMailer.php';
+    require 'PHPMailer/src/SMTP.php';
 
-require __DIR__ . 'PHPMailer/src/Exception.php';
-require __DIR__ . 'PHPMailer/src/PHPMailer.php';
-require __DIR__ . 'PHPMailer/src/SMTP.php';
+    $email = $_GET['email'] ?? '';
+    $verificationCode = rand(100000, 999999);
 
-// Load environment variables from .env
-$config = parse_ini_file('.env');
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.hostinger.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'raizeningalla@gmail.com';
+        $mail->Password = 'dyva pkub kjun udyk';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port = 465;
 
-$email = $_GET['email'] ?? '';
-$verificationCode = rand(100000, 999999);
+        $mail->setFrom('raizeningalla@gmail.com', 'kapeShop Support');
+        $mail->addAddress($email);
+        $mail->isHTML(true);
+        $mail->Subject = 'kapeShop Account Verification';
+        $mail->Body = "
+            <h1>Welcome to kapeShop!</h1>
+            <p>Here is your verification code:</p>
+            <h1>$verificationCode</h1>
+            <p>If you didn't request this, please ignore this email.</p>
+        ";
 
-$mail = new PHPMailer(true);
-try {
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = $config['SMTP_USER'];
-    $mail->Password = $config['SMTP_PASS'];
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port = 465;
-
-    $mail->setFrom($config['SMTP_USER'], 'kapeShop Support');
-    $mail->addAddress($email);
-    $mail->isHTML(true);
-    $mail->Subject = 'kapeShop Account Verification';
-    $mail->Body = "
-        <h1>Welcome to kapeShop!</h1>
-        <p>Here is your verification code:</p>
-        <h1>$verificationCode</h1>
-        <p>If you didn't request this, please ignore this email.</p>
-    ";
-
-    $mail->send();
-    echo $verificationCode;
-
-} catch (Exception $e) {
-    echo "Failed to send email. Error: {$mail->ErrorInfo}";
-}
+        $mail->send();
+        echo $verificationCode;
+        
+    } catch (Exception $e) {
+        echo "Failed to send email. Error: {$mail->ErrorInfo}";
+    }
 ?>

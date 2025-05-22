@@ -249,7 +249,7 @@
     <!--signin form-->
         <form class="signupForm move-up" id="signupForm">
             <img class="logo move-up" src="images/profile-icon.png">
-            <h1 class="move-up">SIGN UPP</h1>
+            <h1 class="move-up">SIGN UP</h1>
             <div class="inputForm move-up">
                 <img src="images/email-icon.png">
                 <input type="email" id="signupEmail" name="signupEmail" placeholder="Email" required>

@@ -211,6 +211,7 @@
                         const email = users[i].getElementsByTagName("email")[0].textContent;
                         const password = users[i].getElementsByTagName("password")[0].textContent;
                         const status = users[i].getElementsByTagName("status")[0].textContent;
+                        console.log(email);
                         
                         if(inputEmail === "admin@admin"){
                             if(inputPass==="admin"){
