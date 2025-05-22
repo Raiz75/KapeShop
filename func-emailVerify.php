@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require __DIR__ . 'PHPMailer/src/Exception.php';
+require __DIR__ . 'PHPMailer/src/PHPMailer.php';
+require __DIR__ . 'PHPMailer/src/SMTP.php';
 
 // Load environment variables from .env
 $config = parse_ini_file('.env');
