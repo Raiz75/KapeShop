@@ -1,23 +1,21 @@
 <?php
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+    use phpmailer\phpmailer\phpmailer;
+    use phpmailer\phpmailer\Exception;
 
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
+    require 'phpmailer/src/Exception.php';
+    require 'phpmailer/src/PHPMailer.php';
+    require 'phpmailer/src/SMTP.php';
 
     $email = $_GET['email'] ?? '';
     $newPass = rand(100000, 999999);
 
-    $config = parse_ini_file('.env');
-
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.hostinger.com';
+        $mail->Host = 'smtp.hostinger.com';          // Hostinger SMTP server
         $mail->SMTPAuth = true;
-        $mail->Username = $config['SMTP_USER'];
-        $mail->Password = $config['SMTP_PASS'];
+        $mail->Username = 'noreply@kapeshop.store';  // Your Hostinger email
+        $mail->Password = 'Kapeshop@2025';           // Your email password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
