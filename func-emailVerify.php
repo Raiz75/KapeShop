@@ -12,14 +12,14 @@
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.hostinger.com';
+        $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = "noreply@kapeshop.store";
-        $mail->Password = "Kapeshop@2025";
+        $mail->Username = "raizeningalla@gmail.com";
+        $mail->Password = "dyva pkub kjun udyk";
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
-        $mail->setFrom('noreply@kapeshop.store', 'KapeShop Support');
+        $mail->setFrom('raizeningalla@gmail.com', 'KapeShop Support');
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = 'KapeShop Account Verification';
