@@ -8,18 +8,20 @@
 
     $email = $_GET['email'] ?? '';
     $verificationCode = rand(100000, 999999);
+    
+    $config = parse_ini_file('.env');
 
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
         $mail->Host = 'smtp.hostinger.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'raizeningalla@gmail.com';
-        $mail->Password = 'dyva pkub kjun udyk';
+        $mail->Username = $config['SMTP_USER'];
+        $mail->Password = $config['SMTP_PASS'];
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
-        $mail->setFrom('raizeningalla@gmail.com', 'KapeShop Support');
+        $mail->setFrom('noreply@kapeshop.store', 'KapeShop Support');
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = 'KapeShop Account Verification';
