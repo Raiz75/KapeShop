@@ -19,12 +19,12 @@
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
-        $mail->setFrom('raizeningalla@gmail.com', 'kapeShop Support');
+        $mail->setFrom('raizeningalla@gmail.com', 'KapeShop Support');
         $mail->addAddress($email);
         $mail->isHTML(true);
-        $mail->Subject = 'kapeShop Account Verification';
+        $mail->Subject = 'KapeShop Account Verification';
         $mail->Body = "
-            <h1>Welcome to kapeShop!</h1>
+            <h1>Welcome to KapeShop!</h1>
             <p>Here is your verification code:</p>
             <h1>$verificationCode</h1>
             <p>If you didn't request this, please ignore this email.</p>
