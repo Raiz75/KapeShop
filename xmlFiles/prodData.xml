@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inventory>
   <!-- for id increment -->
-  <incrementID>36</incrementID>
+  <incrementID>20</incrementID>
   <product>
     <ID>1</ID>
     <img>images/hotEspresso.png</img>
@@ -249,102 +249,4 @@
       <tag>dessert</tag>
     </tags>
   </product>
-  <product>
-    <ID>20</ID>
-    <img>images/back-icon.png</img>
-    <name>test product</name>
-    <category>qwe</category>
-    <price>21</price>
-    <stock>100</stock>
-    <soldCount>0</soldCount>
-    <tags>
-      <tag>sweet</tag>
-      <tag>dessert</tag>
-    </tags>
-  </product>
-  <product>
-    <ID>21</ID>
-    <img>images/b3.png</img>
-    <name>bago</name>
-    <category>bagocat</category>
-    <price>100</price>
-    <stock>100</stock>
-    <soldCount>0</soldCount>
-    <tags>
-      <tag>test</tag>
-    </tags>
-  </product>
-  <product>
-    <ID>22</ID>
-    <img>images/b3.png</img>
-    <name>test</name>
-    <category>bagocat</category>
-    <price>12</price>
-    <stock>100</stock>
-    <soldCount>0</soldCount>
-    <tags>
-      <tag>test</tag>
-    </tags>
-  </product>
-  <product>
-    <ID>23</ID>
-    <img>images/b3.png</img>
-    <name>23</name>
-    <category>hot</category>
-    <price>23</price>
-    <stock>23</stock>
-    <soldCount>0</soldCount>
-    <tags>
-      <tag>test</tag>
-    </tags>
-  </product>
-  <product>
-    <ID>24</ID>
-    <img>images/b3.png</img>
-    <name>24</name>
-    <category>test</category>
-    <price>24</price>
-    <stock>24</stock>
-    <soldCount>0</soldCount>
-    <tags>
-      <tag>test</tag>
-    </tags>
-  </product>
-  <product>
-    <ID>25</ID>
-    <img>images/b3.png</img>
-    <name>25</name>
-    <category>test</category>
-    <price>25</price>
-    <stock>25</stock>
-    <soldCount>0</soldCount>
-    <tags>
-      <tag>coffee</tag>
-      <tag>test</tag>
-    </tags>
-  </product>
-  <product>
-    <ID>34</ID>
-    <img>images/b1.png</img>
-    <name>34</name>
-    <category>hot</category>
-    <price>25</price>
-    <stock>25</stock>
-    <soldCount>0</soldCount>
-    <tags>
-      <tag>test</tag>
-    </tags>
-  </product>
-  <product>
-    <ID>35</ID>
-    <img>images/cart-icon.png</img>
-    <name>testttt</name>
-    <category>frappe</category>
-    <price>1</price>
-    <stock>8</stock>
-    <soldCount>0</soldCount>
-    <tags>
-        <tag>coffee</tag>
-    </tags>
-</product>
 </inventory>
