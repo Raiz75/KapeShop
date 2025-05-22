@@ -6,20 +6,22 @@
     require 'PHPMailer/src/PHPMailer.php';
     require 'PHPMailer/src/SMTP.php';
 
-    $email = $_GET['email'] ?? ''; // Get email from JS
+    $email = $_GET['email'] ?? '';
     $newPass = rand(100000, 999999);
+
+    $config = parse_ini_file('.env');
 
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = 'smtp.hostinger.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'raizeningalla@gmail.com';
-        $mail->Password = 'dyva pkub kjun udyk'; // App password
+        $mail->Username = $config['SMTP_USER'];
+        $mail->Password = $config['SMTP_PASS'];
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
-        $mail->setFrom('raizeningalla@gmail.com', 'kapeShop Support');
+        $mail->setFrom('noreply@kapeshop.store', 'KapeShop Support');
         $mail->addAddress($email);
         $mail->isHTML(true);
         $mail->Subject = 'kapeShop Password Reset';
