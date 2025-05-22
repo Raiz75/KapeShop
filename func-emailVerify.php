@@ -10,7 +10,7 @@
     $verificationCode = rand(100000, 999999);
 
     $mail = new PHPMailer(true);
-    // try {
+    try {
     //     $mail->isSMTP();
     //     $mail->Host = 'smtp.gmail.com';
     //     $mail->SMTPAuth = true;
