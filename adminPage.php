@@ -1703,10 +1703,10 @@ if (!isset($_SESSION['user'])) {
                                     document.getElementById("updateProduct").classList.remove("disabledButton");
                                     document.getElementById("deleteProduct").classList.remove("disabledButton");
                                     showAlert("Creating Product, Please Wait.", "rgb(221, 187, 36)");
+                                    cancelCreateProduct();
                                     setTimeout(() => {
                                         showAlert("Product Successfully Created!", "rgb(36, 221, 67)");
                                         loadProductTable();
-                                        cancelCreateProduct();
                                     }, 3000);
                                 } else if (xhr.responseText === "error:duplicate_name") {
                                     showAlert("Product Name Already Exists.", "rgb(247, 84, 84)");
