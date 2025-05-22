@@ -8,16 +8,14 @@
 
     $email = $_GET['email'] ?? '';
     $verificationCode = rand(100000, 999999);
-    
-    $config = parse_ini_file('.env');
 
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
         $mail->Host = 'smtp.hostinger.com';
         $mail->SMTPAuth = true;
-        $mail->Username = $config['SMTP_USER'];
-        $mail->Password = $config['SMTP_PASS'];
+        $mail->Username = "noreply@kapeshop.store";
+        $mail->Password = "Kapeshop@2025";
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
