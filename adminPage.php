@@ -1706,7 +1706,7 @@ if (!isset($_SESSION['user'])) {
                                     setTimeout(() => {
                                         showAlert("Product Successfully Created!", "rgb(36, 221, 67)");
                                         loadProductTable();
-                                        loadProductTable();
+                                        cancelCreateProduct();
                                     }, 3000);
                                 } else if (xhr.responseText === "error:duplicate_name") {
                                     showAlert("Product Name Already Exists.", "rgb(247, 84, 84)");
@@ -1784,7 +1784,6 @@ if (!isset($_SESSION['user'])) {
                                     showAlert("Updating Product, Please Wait.", "rgb(221, 187, 36)");
                                     setTimeout(() => {
                                         showAlert("Product successfully updated!", "rgb(36, 221, 67)");
-                                        loadProductTable();
                                         loadProductTable();
                                          document.getElementById("prodID").value = "";
                                         document.getElementById("prodNameInput").value = "";
@@ -1919,61 +1918,53 @@ if (!isset($_SESSION['user'])) {
         }
 // generate report
         async function generateReport() {
-    const reportDiv = document.getElementById("reportDiv");
+            const reportDiv = document.getElementById("reportDiv");
 
-    if (!reportDiv) {
-        alert("reportDiv not found.");
-        return;
-    }
+            if (!reportDiv) {
+                alert("reportDiv not found.");
+                return;
+            }
 
-    // Wait to ensure charts are rendered
-    await new Promise(resolve => setTimeout(resolve, 200));
+            // Wait to ensure charts are rendered
+            await new Promise(resolve => setTimeout(resolve, 200));
 
-    html2canvas(reportDiv, { scale: 2 }).then(canvas => {
-        const imgData = canvas.toDataURL("image/png");
+            html2canvas(reportDiv, { scale: 2 }).then(canvas => {
+                const imgData = canvas.toDataURL("image/png");
 
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('landscape', 'pt', 'a4');
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('landscape', 'pt', 'a4');
 
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
 
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
+                const imgWidth = canvas.width;
+                const imgHeight = canvas.height;
 
-        const scale = Math.min(pdfWidth * 0.9 / imgWidth, (pdfHeight - 60) / imgHeight);
-        const scaledWidth = imgWidth * scale;
-        const scaledHeight = imgHeight * scale;
+                const scale = Math.min(pdfWidth * 0.9 / imgWidth, (pdfHeight - 60) / imgHeight);
+                const scaledWidth = imgWidth * scale;
+                const scaledHeight = imgHeight * scale;
 
-        const x = (pdfWidth - scaledWidth) / 2;
-        const y = 60; // leave space at top for title
+                const x = (pdfWidth - scaledWidth) / 2;
+                const y = 60; // leave space at top for title
 
-        // 📝 Title text
-        pdf.setFontSize(24);
-        pdf.setFont("helvetica", "bold");
-        pdf.text("KapeShop Report", pdfWidth / 2, 40, { align: "center" });
+                // 📝 Title text
+                pdf.setFontSize(24);
+                pdf.setFont("helvetica", "bold");
+                pdf.text("KapeShop Report", pdfWidth / 2, 40, { align: "center" });
 
-        // 📊 Add chart image below title
-        pdf.addImage(imgData, 'PNG', x, y, scaledWidth, scaledHeight);
+                // 📊 Add chart image below title
+                pdf.addImage(imgData, 'PNG', x, y, scaledWidth, scaledHeight);
 
-        const padZero = (num) => num.toString().padStart(2, '0');
-            const today = `${padZero(new Date().getMonth() + 1)}/${padZero(new Date().getDate())}/${new Date().getFullYear()}`;
-        // 💾 Save PDF
-        pdf.save("kapeShop_report_"+today+".pdf");
+                const padZero = (num) => num.toString().padStart(2, '0');
+                    const today = `${padZero(new Date().getMonth() + 1)}/${padZero(new Date().getDate())}/${new Date().getFullYear()}`;
+                // 💾 Save PDF
+                pdf.save("kapeShop_report_"+today+".pdf");
 
-        link.click();
-    }).catch(error => {
-        console.error("Error generating report:", error);
-    });
-}
-
-
-
-
-
-
-
-
+                link.click();
+            }).catch(error => {
+                console.error("Error generating report:", error);
+            });
+        }
 //alert
         let alertTimeoutId;
         function showAlert(message, bgColor) {
