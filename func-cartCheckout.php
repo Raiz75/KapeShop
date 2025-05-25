@@ -31,8 +31,6 @@ foreach ($users as $user) {
 }
 $userDoc->save("xmlFiles/userData.xml");
 
-
-
 // Append to salesHistory.xml
 $historyFile = "xmlFiles/salesHistory.xml";
 $historyDoc = new DOMDocument();
@@ -61,10 +59,6 @@ foreach ($checkedOutItems as $item) {
     $root->appendChild($itemNode);
 }
 $historyDoc->save($historyFile);
-
-
-
-
 
 // Update prodData.xml (inventory)
 $inventoryFile = "xmlFiles/prodData.xml";

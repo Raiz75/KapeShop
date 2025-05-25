@@ -15,6 +15,8 @@ if (!isset($_SESSION['user'])) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
     <title>Admin Page</title>
     <style>
         body {
@@ -725,8 +727,8 @@ if (!isset($_SESSION['user'])) {
                             <canvas class="salesOverTimeChart" id="salesOverTimeChart"></canvas>
                         </div>
                 </div>
-            <!--sales table-->
-                <div class="salesTablePanel">
+        <!--sales table-->
+                <div class="salesTablePanel" id="salesTablePanel">
                     <p><b>Sales History</b></p>
                     <div class="salesTablePanelContainer">
                         <table id="saleshistoryTable">
@@ -836,7 +838,7 @@ if (!isset($_SESSION['user'])) {
                         </div>
                     </div>
         <!--prodTable-->
-                <div class="prodTablePanel">
+                <div class="prodTablePanel" id="prodTablePanel">
                     <p><b>Product Inventory</b></p>
                     <div class="prodTablePanelContainer">
                         <table id="productTable">
@@ -866,7 +868,7 @@ if (!isset($_SESSION['user'])) {
             <div class="title">
                 <p><b>Account Settings</b></p>
             </div>
-            <div class="accTablePanel">
+            <div class="accTablePanel" id="accTablePanel">
                 <p><b>Account List</b></p>
                 <div class="accTablePanelContainer">
                     <table id="accTable">
@@ -958,7 +960,7 @@ if (!isset($_SESSION['user'])) {
                         resolve(); // All 3 XMLs loaded
                     }
                 }
-                // Load userData.xml
+            // Load userData.xml
                 const userReq = new XMLHttpRequest();
                 userReq.open("GET", "xmlFiles/userData.xml", true);
                 userReq.onreadystatechange = function () {
@@ -973,7 +975,7 @@ if (!isset($_SESSION['user'])) {
                     }
                 };
                 userReq.send();
-                // Load prodData.xml
+            // Load prodData.xml
                 const prodReq = new XMLHttpRequest();
                 prodReq.open("GET", "xmlFiles/prodData.xml", true);
                 prodReq.onreadystatechange = function () {
@@ -981,18 +983,24 @@ if (!isset($_SESSION['user'])) {
                         const xml = prodReq.responseXML;
                         const products = xml.getElementsByTagName("product");
                         for (let i = 0; i < products.length; i++) {
+                            const ID = products[i].getElementsByTagName("ID")[0]?.textContent;
                             const name = products[i].getElementsByTagName("name")[0].textContent;
                             const price = parseFloat(products[i].getElementsByTagName("price")[0].textContent);
                             const stock = parseInt(products[i].getElementsByTagName("stock")[0].textContent);
                             const soldCount = parseInt(products[i].getElementsByTagName("soldCount")[0].textContent);
-
-                            prodDatas.push({ name, price, stock, soldCount });
+                            const category = products[i].getElementsByTagName("category")[0]?.textContent || "";
+                            const tagElements = products[i].getElementsByTagName("tag");
+                            let tags = [];
+                            for (let j = 0; j < tagElements.length; j++) {
+                                tags.push(tagElements[j]?.textContent?.trim() || "");
+                            }
+                            prodDatas.push({ ID, name, price, stock, soldCount, category, tags });
                         }
                         checkDone();
                     }
                 };
                 prodReq.send();
-                // Load salesHistory.xml
+            // Load salesHistory.xml
                 const salesReq = new XMLHttpRequest();
                 salesReq.open("GET", "xmlFiles/salesHistory.xml", true);
                 salesReq.onreadystatechange = function () {
@@ -1005,6 +1013,7 @@ if (!isset($_SESSION['user'])) {
                             const quantity = parseInt(sales[i].getElementsByTagName("quantity")[0].textContent);
                             const price = parseFloat(sales[i].getElementsByTagName("price")[0].textContent);
                             const date = sales[i].getElementsByTagName("date")[0].textContent;
+
                             salesDatas.push({ email, prodName, quantity, price, date });
                         }
                         checkDone();
@@ -1516,7 +1525,6 @@ if (!isset($_SESSION['user'])) {
 
 
     //load prod table
-        let prodIds = [];
         function loadProductTable() {
             const xhr = new XMLHttpRequest();
             xhr.open("GET", "xmlFiles/prodData.xml", true);
@@ -1918,52 +1926,67 @@ if (!isset($_SESSION['user'])) {
         }
 // generate report
         async function generateReport() {
-            const reportDiv = document.getElementById("reportDiv");
-
-            if (!reportDiv) {
-                alert("reportDiv not found.");
-                return;
-            }
-
-            // Wait to ensure charts are rendered
-            await new Promise(resolve => setTimeout(resolve, 200));
-
-            html2canvas(reportDiv, { scale: 2 }).then(canvas => {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('landscape', 'pt', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            // ===== 1. Add CHART IMAGE =====
+            const chartDiv = document.getElementById("reportDiv");
+            if (chartDiv) {
+                // Ensure visibility
+                const originalDisplay = chartDiv.style.display;
+                if (getComputedStyle(chartDiv).display === 'none') {
+                    chartDiv.style.display = 'block';
+                }
+                await new Promise(resolve => setTimeout(resolve, 200));
+                const canvas = await html2canvas(chartDiv, {
+                    scale: 2,
+                    willReadFrequently: true
+                });
+                chartDiv.style.display = originalDisplay;
                 const imgData = canvas.toDataURL("image/png");
-
-                const { jsPDF } = window.jspdf;
-                const pdf = new jsPDF('landscape', 'pt', 'a4');
-
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = pdf.internal.pageSize.getHeight();
-
                 const imgWidth = canvas.width;
                 const imgHeight = canvas.height;
-
-                const scale = Math.min(pdfWidth * 0.9 / imgWidth, (pdfHeight - 60) / imgHeight);
+                const scale = Math.min((pdfWidth * 0.9) / imgWidth, 400 / imgHeight);
                 const scaledWidth = imgWidth * scale;
                 const scaledHeight = imgHeight * scale;
-
                 const x = (pdfWidth - scaledWidth) / 2;
-                const y = 60; // leave space at top for title
-
-                // 📝 Title text
-                pdf.setFontSize(24);
+                const y = 60;
+                pdf.setFontSize(20);
                 pdf.setFont("helvetica", "bold");
-                pdf.text("KapeShop Report", pdfWidth / 2, 40, { align: "center" });
-
-                // 📊 Add chart image below title
+                pdf.text("Charts Report", pdfWidth / 2, 40, { align: "center" });
                 pdf.addImage(imgData, 'PNG', x, y, scaledWidth, scaledHeight);
-
-                const padZero = (num) => num.toString().padStart(2, '0');
-                    const today = `${padZero(new Date().getMonth() + 1)}/${padZero(new Date().getDate())}/${new Date().getFullYear()}`;
-                // 💾 Save PDF
-                pdf.save("kapeShop_report_"+today+".pdf");
-
-                link.click();
-            }).catch(error => {
-                console.error("Error generating report:", error);
-            });
+            }
+            // ===== 2. Add TABLES from Arrays =====
+            const tables = [
+                { title: "Sales Report", data: salesDatas },
+                { title: "Inventory Report", data: prodDatas },
+                { title: "Account Report", data: userDatas }
+            ];
+            for (let i = 0; i < tables.length; i++) {
+                const { title, data } = tables[i];
+                if (!Array.isArray(data) || data.length === 0) {
+                    console.warn(`${title} has no data.`);
+                    continue;
+                }
+                const headers = Object.keys(data[0]);
+                const rows = data.map(item => headers.map(h => item[h]));
+                if (i > 0 || chartDiv) pdf.addPage(); // add page unless it's the first after charts
+                pdf.setFontSize(20);
+                pdf.setFont("helvetica", "bold");
+                pdf.text(title, pdfWidth / 2, 40, { align: "center" });
+                pdf.autoTable({
+                    startY: 60,
+                    head: [headers],
+                    body: rows,
+                    theme: 'grid',
+                    styles: { fontSize: 10 },
+                    headStyles: { fillColor: [153, 112, 23] }
+                });
+            }
+            // ===== 3. Save PDF =====
+            const padZero = (num) => num.toString().padStart(2, '0');
+            const today = `${padZero(new Date().getMonth() + 1)}/${padZero(new Date().getDate())}/${new Date().getFullYear()}`;
+            pdf.save("kapeShop_report_" + today + ".pdf");
         }
 //alert
         let alertTimeoutId;

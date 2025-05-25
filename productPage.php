@@ -1109,7 +1109,6 @@ if (!isset($_SESSION['user'])) {
         function updateQuantity(input, pId) {
             const newQuantity = parseInt(input.value);
             if (isNaN(newQuantity) || newQuantity < 1) return;
-
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "func-cartUpdateQuantity.php", true);
             xhr.setRequestHeader("Content-Type", "application/json");

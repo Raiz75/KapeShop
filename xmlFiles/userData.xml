@@ -10,14 +10,6 @@
     <email>test@test</email>
     <password>test</password>
     <status>active</status>
-    <cart>
-      <item>
-        <prodCartId>16</prodCartId>
-        <prodCartName>Chocolate Chip Cookie</prodCartName>
-        <prodCartPrice>30</prodCartPrice>
-        <prodCartQuan>94</prodCartQuan>
-        <prodCartImg>images/dessertChocolateChipCookie.png</prodCartImg>
-      </item>
-    </cart>
+    <cart/>
   </user>
 </profile>

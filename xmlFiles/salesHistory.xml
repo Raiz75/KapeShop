@@ -175,4 +175,88 @@
     <quantity>3</quantity>
     <date>05/18/2025</date>
   </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Caramel Frappe</prodName>
+    <price>67</price>
+    <quantity>1</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Strawberry Frappe</prodName>
+    <price>70</price>
+    <quantity>50</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Mocha Frappe</prodName>
+    <price>65</price>
+    <quantity>1</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Mocha Frappe</prodName>
+    <price>65</price>
+    <quantity>1</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Iced Chai Latte</prodName>
+    <price>60</price>
+    <quantity>50</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Iced Chai Latte</prodName>
+    <price>60</price>
+    <quantity>1</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Vanilla Frappe</prodName>
+    <price>65</price>
+    <quantity>1</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Blueberry Muffin</prodName>
+    <price>30</price>
+    <quantity>1</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Cappuccino</prodName>
+    <price>70</price>
+    <quantity>17</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Cappuccino</prodName>
+    <price>70</price>
+    <quantity>1</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Cappuccino</prodName>
+    <price>70</price>
+    <quantity>1</quantity>
+    <date>05/25/2025</date>
+  </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Cappuccino</prodName>
+    <price>70</price>
+    <quantity>43</quantity>
+    <date>05/25/2025</date>
+  </item>
 </history>

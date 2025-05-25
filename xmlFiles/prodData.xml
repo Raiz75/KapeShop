@@ -34,8 +34,8 @@
     <name>Cappuccino</name>
     <category>hot</category>
     <price>70</price>
-    <stock>97</stock>
-    <soldCount>8</soldCount>
+    <stock>35</stock>
+    <soldCount>70</soldCount>
     <tags>
       <tag>hot</tag>
       <tag>coffee</tag>
@@ -112,8 +112,8 @@
     <name>Iced Chai Latte</name>
     <category>Cold</category>
     <price>60</price>
-    <stock>100</stock>
-    <soldCount>0</soldCount>
+    <stock>48</stock>
+    <soldCount>52</soldCount>
     <tags>
       <tag>cold</tag>
       <tag>coffee</tag>
@@ -125,8 +125,8 @@
     <name>Caramel Frappe</name>
     <category>frappe</category>
     <price>67</price>
-    <stock>96</stock>
-    <soldCount>4</soldCount>
+    <stock>95</stock>
+    <soldCount>5</soldCount>
     <tags>
       <tag>sweet</tag>
       <tag>frappe</tag>
@@ -138,8 +138,8 @@
     <name>Mocha Frappe</name>
     <category>Frappe</category>
     <price>65</price>
-    <stock>100</stock>
-    <soldCount>0</soldCount>
+    <stock>98</stock>
+    <soldCount>2</soldCount>
     <tags>
       <tag>sweet</tag>
       <tag>frappe</tag>
@@ -151,8 +151,8 @@
     <name>Vanilla Frappe</name>
     <category>Frappe</category>
     <price>65</price>
-    <stock>100</stock>
-    <soldCount>0</soldCount>
+    <stock>99</stock>
+    <soldCount>1</soldCount>
     <tags>
       <tag>sweet</tag>
       <tag>frappe</tag>
@@ -177,8 +177,8 @@
     <name>Strawberry Frappe</name>
     <category>frappe</category>
     <price>70</price>
-    <stock>96</stock>
-    <soldCount>4</soldCount>
+    <stock>46</stock>
+    <soldCount>54</soldCount>
     <tags>
       <tag>sweet</tag>
       <tag>frappe</tag>
@@ -190,8 +190,8 @@
     <name>Blueberry Muffin</name>
     <category>dessert</category>
     <price>30</price>
-    <stock>90</stock>
-    <soldCount>10</soldCount>
+    <stock>89</stock>
+    <soldCount>11</soldCount>
     <tags>
       <tag>sweet</tag>
       <tag>frappe</tag>
