@@ -969,7 +969,9 @@ if (!isset($_SESSION['user'])) {
                         const users = xml.getElementsByTagName("user");
                         for (let i = 0; i < users.length; i++) {
                             const email = users[i].getElementsByTagName("email")[0].textContent;
-                            userDatas.push({ email }); // Add more fields if needed
+                            const password = users[i].getElementsByTagName("password")[0].textContent;
+                            const status = users[i].getElementsByTagName("status")[0].textContent;
+                            userDatas.push({ email, password, status });
                         }
                         checkDone();
                     }
