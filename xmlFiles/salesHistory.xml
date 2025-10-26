@@ -259,4 +259,11 @@
     <quantity>43</quantity>
     <date>05/25/2025</date>
   </item>
+  <item>
+    <email>test@test</email>
+    <prodName>Blueberry Muffin</prodName>
+    <price>30</price>
+    <quantity>1</quantity>
+    <date>10/25/2025</date>
+  </item>
 </history>

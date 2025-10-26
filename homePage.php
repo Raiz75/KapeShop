@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: landingPage_index.php");
+    header("Location: index.php");
     exit();
 }
 ?>
@@ -20,9 +20,10 @@ if (!isset($_SESSION['user'])) {
             margin:0;
             font-family: Arial, sans-serif;
             background-color: whitesmoke;
+            font-size: 1vw;
         }
     /* Navigation */
-         .navigation {
+        .navigation {
             position: fixed;
             top: 0;
             left: 0;
@@ -36,14 +37,12 @@ if (!isset($_SESSION['user'])) {
             height: 10vh;
         }
         .logo {
-            width: 5%;
+            min-width: 100px;
             height: 100%;
             margin-left: 50px;
         }
         .logo-text{
-            font-size: 30px;
-            margin-left: 5px;
-            margin-right: 1050px;
+            font-size: 2em;
         }
         .logo-text span{
             color: rgba(153, 112, 23);
@@ -52,6 +51,8 @@ if (!isset($_SESSION['user'])) {
             list-style-type: none;
             display: flex;
             align-items: center;
+            position: absolute;
+            right: 3vw;
         }
         .aa{
             display: block;
@@ -123,10 +124,10 @@ if (!isset($_SESSION['user'])) {
             background-color: rgba(153, 112, 23);
             font-size: 1em;
             margin: 10px;
-            padding:5px;
+            padding:.8vw;
             border-radius: 12px;
             color:white;
-            width: 20%;
+            width: 30%;
             transform: translateY(-3px);
             box-shadow: 0px 3px 5px grey;
             transition: .3s ease-in-out;
@@ -327,20 +328,25 @@ if (!isset($_SESSION['user'])) {
             height: 60%;
             width: 100%;
         }
+        /* una */
+        .una{
+            display: flex;
+            position: relative;
+        }
     /**bean image */
         .b0{
             position: absolute;
-            bottom: 50px;
-            right: 150px;
-            height: 500px;
+            bottom: 22%;
+            right: 5%;
+            height: 20vw;
             filter: drop-shadow(0px 80px 30px rgba(0, 0, 0, 0.4));
         }
         .b0 img{
-            width: 630px;
+            width: 33vw;
         }
         .b1{
             position: absolute;
-            top: -200px;
+            top: -20vw;
             right:730px;
             height: 250px;
             opacity:0;
@@ -350,7 +356,7 @@ if (!isset($_SESSION['user'])) {
         }
         .b2{
             position: absolute;
-            top: -200px;
+            top: -20vw;
             right: 290px;
             height: 200px;
             z-index: 1;
@@ -360,7 +366,7 @@ if (!isset($_SESSION['user'])) {
         }
         .b3{
             position: absolute;
-            top: -200px;
+            top: -20vw;
             right: 0px;
             height: 220px;
             z-index: 1;
@@ -454,7 +460,7 @@ if (!isset($_SESSION['user'])) {
             align-items: center;
         }
         .aboutUs img{
-            width: 700px;
+            width: 50vw;
             margin-right: 30px;
         }
         .abtHistory{
@@ -560,11 +566,6 @@ if (!isset($_SESSION['user'])) {
                 </ul>
             </div> 
             <br><br><br><br><br><br><br>
-        <!--coffee beans-->
-            <a class="b0 move-up" href="productPage.php"><img src="images/b0.png"></a>
-            <img class="b1" src="images/b1.png">
-            <img class="b2" src="images/b2.png">
-            <img class="b3" src="images/b3.png">
         <!--cart-->
             <div class="cartbox" id="cartbox">
                 <button class="xBtn" onclick="closeCart()">Back</button>
@@ -625,90 +626,97 @@ if (!isset($_SESSION['user'])) {
                 <button onclick="changePass(event)">Change</button>
             </form>
         <!--product selection-->
-            <div class="prodShowcase">
-                <p class="title ttl move-up">OUR COFFEE OFFER</p>
-                <p class="title move-up">Discover our most delicious and beloved café offerings</p>
-            <!--hot coffee-->
-                <div class="prodBoxContainer move-up">
-                    <div class="prod-box">
-                        <div class="contImg">
-                            <div class="carousel-container">
-                                <div class="carousel" id="c1" data-index="0">
-                                    <img src="images/hotAmericano.png">
-                                    <img src="images/hotEspresso.png">
-                                    <img src="images/hotMocha.png">
-                                    <img src="images/hotCappuccino.png">
+            <div class="una">
+                <div class="prodShowcase">
+                    <p class="title ttl move-up">OUR COFFEE OFFER</p>
+                    <p class="title move-up">Discover our most delicious and beloved café offerings</p>
+                <!--hot coffee-->
+                    <div class="prodBoxContainer move-up">
+                        <div class="prod-box">
+                            <div class="contImg">
+                                <div class="carousel-container">
+                                    <div class="carousel" id="c1" data-index="0">
+                                        <img src="images/hotAmericano.png">
+                                        <img src="images/hotEspresso.png">
+                                        <img src="images/hotMocha.png">
+                                        <img src="images/hotCappuccino.png">
+                                    </div>
+                                    <button class="prev" onclick="moveSlide(-1, document.getElementById('c1'))">&#10094;</button>
+                                    <button class="next" onclick="moveSlide(1, document.getElementById('c1'))">&#10095;</button>
                                 </div>
-                                <button class="prev" onclick="moveSlide(-1, document.getElementById('c1'))">&#10094;</button>
-                                <button class="next" onclick="moveSlide(1, document.getElementById('c1'))">&#10095;</button>
+                            </div>
+                            <div class="prodDetails">
+                                <p class="ttl">HOT COFFEE</p>
+                                <p>A rich, aromatic cup of freshly brewed coffee, served steaming hot for a perfect balance of bold flavor and comforting warmth.</p>
                             </div>
                         </div>
-                        <div class="prodDetails">
-                            <p class="ttl">HOT COFFEE</p>
-                            <p>A rich, aromatic cup of freshly brewed coffee, served steaming hot for a perfect balance of bold flavor and comforting warmth.</p>
-                        </div>
-                    </div>
-            <!--iced coffee-->
-                    <div class="prod-box">
-                        <div class="contImg">
-                            <div class="carousel-container">
-                                <div class="carousel" id="c2" data-index="0">
-                                    <img src="images/IcedAmericano.png">
-                                    <img src="images/IcedCaramelLatte.png">
-                                    <img src="images/IcedChaiLatte.png">
-                                    <img src="images/IcedLatte.png">
-                                    <img src="images/IcedMocha.png">
+                <!--iced coffee-->
+                        <div class="prod-box">
+                            <div class="contImg">
+                                <div class="carousel-container">
+                                    <div class="carousel" id="c2" data-index="0">
+                                        <img src="images/IcedAmericano.png">
+                                        <img src="images/IcedCaramelLatte.png">
+                                        <img src="images/IcedChaiLatte.png">
+                                        <img src="images/IcedLatte.png">
+                                        <img src="images/IcedMocha.png">
+                                    </div>
+                                    <button class="prev" onclick="moveSlide(-1, document.getElementById('c2'))">&#10094;</button>
+                                    <button class="next" onclick="moveSlide(1, document.getElementById('c2'))">&#10095;</button>
                                 </div>
-                                <button class="prev" onclick="moveSlide(-1, document.getElementById('c2'))">&#10094;</button>
-                                <button class="next" onclick="moveSlide(1, document.getElementById('c2'))">&#10095;</button>
+                            </div>
+                            <div class="prodDetails">
+                                <p class="ttl">ICED COFFEE</p>
+                                <p>A refreshing iced coffee, brewed to perfection and served chilled for a smooth, bold flavor with a cool kick.</p>
                             </div>
                         </div>
-                        <div class="prodDetails">
-                            <p class="ttl">ICED COFFEE</p>
-                            <p>A refreshing iced coffee, brewed to perfection and served chilled for a smooth, bold flavor with a cool kick.</p>
-                        </div>
-                    </div>
-            <!--frappe-->
-                    <div class="prod-box">
-                        <div class="contImg">
-                            <div class="carousel-container">
-                                <div class="carousel" id="c3" data-index="0">
-                                    <img src="images/frappeCaramel.png">
-                                    <img src="images/frappeChocolate.png">
-                                    <img src="images/frappeMocha.png">
-                                    <img src="images/frappeStrawberry.png">
-                                    <img src="images/frappeVanilla.png">
+                <!--frappe-->
+                        <div class="prod-box">
+                            <div class="contImg">
+                                <div class="carousel-container">
+                                    <div class="carousel" id="c3" data-index="0">
+                                        <img src="images/frappeCaramel.png">
+                                        <img src="images/frappeChocolate.png">
+                                        <img src="images/frappeMocha.png">
+                                        <img src="images/frappeStrawberry.png">
+                                        <img src="images/frappeVanilla.png">
+                                    </div>
+                                    <button class="prev" onclick="moveSlide(-1, document.getElementById('c3'))">&#10094;</button>
+                                    <button class="next" onclick="moveSlide(1, document.getElementById('c3'))">&#10095;</button>
                                 </div>
-                                <button class="prev" onclick="moveSlide(-1, document.getElementById('c3'))">&#10094;</button>
-                                <button class="next" onclick="moveSlide(1, document.getElementById('c3'))">&#10095;</button>
+                            </div>
+                            <div class="prodDetails">
+                                <p class="ttl">FRAPPE</p>
+                                <p>A creamy, ice-blended frappe with rich coffee flavor, topped with whipped cream for a refreshing and indulgent treat.</p>
                             </div>
                         </div>
-                        <div class="prodDetails">
-                            <p class="ttl">FRAPPE</p>
-                            <p>A creamy, ice-blended frappe with rich coffee flavor, topped with whipped cream for a refreshing and indulgent treat.</p>
-                        </div>
-                    </div>
-            <!--dessert-->
-                    <div class="prod-box">
-                        <div class="contImg">
-                            <div class="carousel-container">
-                                <div class="carousel" id="c4" data-index="0">
-                                    <img src="images/dessertCinnamonRolll.png">
-                                    <img src="images/dessertChocolateChipCookie.png">
-                                    <img src="images/dessertBlueberryMuffin.png">
-                                    <img src="images/dessertFrenchBread.png">
-                                    <img src="images/dessertCroissant.png">
+                <!--dessert-->
+                        <div class="prod-box">
+                            <div class="contImg">
+                                <div class="carousel-container">
+                                    <div class="carousel" id="c4" data-index="0">
+                                        <img src="images/dessertCinnamonRolll.png">
+                                        <img src="images/dessertChocolateChipCookie.png">
+                                        <img src="images/dessertBlueberryMuffin.png">
+                                        <img src="images/dessertFrenchBread.png">
+                                        <img src="images/dessertCroissant.png">
+                                    </div>
+                                    <button class="prev" onclick="moveSlide(-1, document.getElementById('c4'))">&#10094;</button>
+                                    <button class="next" onclick="moveSlide(1, document.getElementById('c4'))">&#10095;</button>
                                 </div>
-                                <button class="prev" onclick="moveSlide(-1, document.getElementById('c4'))">&#10094;</button>
-                                <button class="next" onclick="moveSlide(1, document.getElementById('c4'))">&#10095;</button>
                             </div>
-                        </div>
-                        <div class="prodDetails">
-                            <p class="ttl">DESSERT</p>
-                            <p>Indulge in our delightful desserts, from rich, creamy cakes to warm, freshly baked pastries—perfectly sweet treats for any craving</p>
+                            <div class="prodDetails">
+                                <p class="ttl">DESSERT</p>
+                                <p>Indulge in our delightful desserts, from rich, creamy cakes to warm, freshly baked pastries—perfectly sweet treats for any craving</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--coffee beans-->
+                <a class="b0 move-up" href="productPage.php"><img src="images/b0.png"></a>
+                <img class="b1" src="images/b1.png">
+                <img class="b2" src="images/b2.png">
+                <img class="b3" src="images/b3.png">
             </div>
     <!--about us-->
             <div class="abt">
@@ -775,7 +783,7 @@ if (!isset($_SESSION['user'])) {
             const xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (xhttp.readyState === 4 && xhttp.status === 200) {
-                    window.location.href = "landingPage_index.php";
+                    window.location.href = "index.php";
                 }
             };
             xhttp.open("GET", "func-sessionEnd.php", true);

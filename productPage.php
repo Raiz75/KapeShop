@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: landingPage_index.php");
+    header("Location: index.php");
     exit();
 }
 ?>
@@ -20,6 +20,7 @@ if (!isset($_SESSION['user'])) {
             margin: 0;
             background-color: whitesmoke;
             font-family: Arial, sans-serif;
+            font-size: 1vw;
         }
     /* Navigation */
          .navigation {
@@ -36,14 +37,12 @@ if (!isset($_SESSION['user'])) {
             height: 10vh;
         }
         .logo {
-            width: 5%;
+            min-width: 100px;
             height: 100%;
             margin-left: 50px;
         }
         .logo-text{
-            font-size: 30px;
-            margin-left: 5px;
-            margin-right: 1050px;
+            font-size: 2em;
         }
         .logo-text span{
             color: rgba(153, 112, 23);
@@ -52,6 +51,8 @@ if (!isset($_SESSION['user'])) {
             list-style-type: none;
             display: flex;
             align-items: center;
+            position: absolute;
+            right: 3vw;
         }
         .aa{
             display: block;
@@ -123,10 +124,10 @@ if (!isset($_SESSION['user'])) {
             background-color: rgba(153, 112, 23);
             font-size: 1em;
             margin: 10px;
-            padding:5px;
+            padding:.8vw;
             border-radius: 12px;
             color:white;
-            width: 20%;
+            width: 30%;
             transform: translateY(-3px);
             box-shadow: 0px 3px 5px grey;
             transition: .3s ease-in-out;
@@ -333,11 +334,11 @@ if (!isset($_SESSION['user'])) {
             display: flex;
             width: 95%;
             margin: auto;
-            margin-top:50px;
-            margin-bottom:80px;
+            margin-top: 10vh;
             justify-content: space-between;
             text-align:center;
-            min-height:900px;
+            min-height:54vw;
+            border:1px solid green;
         }
     /*sort panel*/
         .sortPannel{
@@ -346,8 +347,9 @@ if (!isset($_SESSION['user'])) {
             background-color: white;
             border-radius: 10px;
             box-shadow: 0px 0px 5px grey;
-            max-height: fit-content;
+            height: 80%;
             font-size: 1.5em;
+            border:1px solid red;
         }
         .sortPannel hr{
             width: 90%;
@@ -425,6 +427,8 @@ if (!isset($_SESSION['user'])) {
         .prodDisplayBox{
             width: 75%;
             position: relative;
+            border:1px solid red;
+            padding-bottom: 5vw;
         }
         .prodDisplay{
             display: grid;
@@ -497,7 +501,7 @@ if (!isset($_SESSION['user'])) {
             grid-template-columns: repeat(3, 1fr);
             gap: 3rem;
             position: absolute;
-            bottom:-70px;
+            bottom:0px;
             font-size: 1.2em;
         }
         .nextPrevBtn button{
@@ -656,7 +660,7 @@ if (!isset($_SESSION['user'])) {
         </form>
     <!--content-->
         <div class="contentDiv">
-        <!--sort panel-->
+            <!--sort panel-->
             <div class="sortPannel">
                 <!--tag search-->
                 <div class="tagSearchBox">
@@ -682,7 +686,7 @@ if (!isset($_SESSION['user'])) {
                     <button class="categories selectedCategory" id="all">All</button>
                 </div>
             </div>
-        <!--product display-->
+            <!--product display-->
             <div class="prodDisplayBox">
                 <div class="prodDisplay" id="prodDisplay"></div>
                 <div class="nextPrevBtn">
@@ -730,7 +734,7 @@ if (!isset($_SESSION['user'])) {
             const xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (xhttp.readyState === 4 && xhttp.status === 200) {
-                    window.location.href = "landingPage_index.php";
+                    window.location.href = "index.php";
                 }
             };
             xhttp.open("GET", "func-sessionEnd.php", true);

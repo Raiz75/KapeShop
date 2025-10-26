@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
+            font-size: 1vw;
         }
         .fontStyle2{
             font-family:"Georgia", serif

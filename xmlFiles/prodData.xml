@@ -190,8 +190,8 @@
     <name>Blueberry Muffin</name>
     <category>dessert</category>
     <price>30</price>
-    <stock>89</stock>
-    <soldCount>11</soldCount>
+    <stock>88</stock>
+    <soldCount>12</soldCount>
     <tags>
       <tag>sweet</tag>
       <tag>frappe</tag>

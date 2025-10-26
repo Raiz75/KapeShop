@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: landingPage_index.php");
+    header("Location: index.php");
     exit();
 }
 ?>
@@ -24,7 +24,7 @@ if (!isset($_SESSION['user'])) {
             margin: 0;
             background-color: whitesmoke;
             font-family: Arial, sans-serif;
-            font-size: .8vw;
+            font-size: 1vw;
         }
         .blur-overlay {
             position: fixed;
@@ -111,13 +111,8 @@ if (!isset($_SESSION['user'])) {
             display: flex;
             gap: 1vw;
             color: rgba(153, 112, 23);
-            font-size: 2rem; 
             font-weight: bold; 
             text-align: center;
-        }
-        .topChartDiv span{
-            font-size: .8rem; 
-            color: grey;
         }
         .dataChart{
             background-color: white;
@@ -128,10 +123,20 @@ if (!isset($_SESSION['user'])) {
             border-radius: .5vw;
             box-shadow: 0px 2px 5px grey;
             padding: 1vw;
-            box-sizing: border-box;
         }
         .textData{
             width: 50%;
+            padding: 0px;
+        }
+        .textData p{
+            color: rgba(153, 112, 23); 
+            font-size: 3em;
+            margin-bottom: 0px;
+        }
+        .textData span{
+            color: grey;
+            font-size: .8em;
+            margin:0px;
         }
         .topChartDiv img{
             width: 50%;
@@ -318,6 +323,8 @@ if (!isset($_SESSION['user'])) {
             border-radius:.3vw;
             transform: translateY(-.1vw);
             transition: .3s ease;
+            padding: 0px;
+            font-size: .6em;
         }
         .prodCrudPanel button:hover{
             background-color: white;
@@ -329,6 +336,7 @@ if (!isset($_SESSION['user'])) {
             border: none;
             border-bottom:.1vw solid grey;
             border-radius:.3vw;
+            font-size: 1em;
         }
         .inputLabel{
             font-size: .7em;
@@ -548,6 +556,7 @@ if (!isset($_SESSION['user'])) {
             border-radius:.3vw;
             transform: translateY(-.1vw);
             transition: .3s ease;
+            font-size: 1em;
         }
         .accTablePanel button:hover{
             background-color: white;
@@ -903,7 +912,7 @@ if (!isset($_SESSION['user'])) {
             const xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (xhttp.readyState === 4 && xhttp.status === 200) {
-                    window.location.href = "landingPage_index.php";
+                    window.location.href = "index.php";
                 }
             };
             xhttp.open("GET", "func-sessionEnd.php", true);
@@ -1046,6 +1055,10 @@ if (!isset($_SESSION['user'])) {
             const totalUsers = userDatas.length - 1;
             document.getElementById('registeredAccountsDisplay').textContent = totalUsers;
         }
+    
+    //charts
+        //let fontSize=1em;
+        const dynamicFontSize = Math.max(14, window.innerWidth / 75); 
     //top selling chart
         function drawTopSellingChart() {
             const salesMap = {};
@@ -1101,7 +1114,7 @@ if (!isset($_SESSION['user'])) {
                             display: true,
                             text: 'Top 10 Best-Selling Products',
                             font: {
-                                size: 24
+                                size: dynamicFontSize
                             }
                         },
                         legend: {
@@ -1167,7 +1180,7 @@ if (!isset($_SESSION['user'])) {
                             display: true,
                             text: 'Sales Over Time',
                             font: {
-                                size: 24
+                                size: dynamicFontSize
                             }
                         },
                         legend: {
@@ -1215,7 +1228,7 @@ if (!isset($_SESSION['user'])) {
                             display: true,
                             text: 'Top 5 buyers',
                             font: {
-                                size: 24
+                                size: dynamicFontSize
                             }
                         },
                         legend: {
@@ -1278,7 +1291,7 @@ if (!isset($_SESSION['user'])) {
                             display: true,
                             text: 'Product Stock and Sales Comparison',
                             font: {
-                                size: 24
+                                size: dynamicFontSize
                             }
                         },
                         legend: {

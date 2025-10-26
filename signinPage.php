@@ -17,10 +17,13 @@
         }
         .bg{
             background-image: url("images/reglog-bg.jpg");
-            background-size: 100vw;
+            background-size: cover;
             background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
             background-blend-mode: darken;
             height: 100vh;
+            width: 100%;
             background-color: rgba(0, 0, 0, 0.3);
             filter: blur(10px);
             z-index: -1;
@@ -31,7 +34,7 @@
             top: 5vw;
             width: 30vw;
             height: 30vw;
-            margin: 5vw 35vw 20vw 35vw;
+            margin: 5vw 35vw;
             background-color: rgba(255, 245, 221, 0.75);
             border-radius:12px;
             filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 1));
@@ -48,27 +51,24 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
-            filter: blur(5px); /* Adjust blur level */
-            z-index: -1; /* Ensures it stays behind the content */
+            filter: blur(5px);
+            z-index: -1;
         }
         .logo{
-            position: absolute;
-            top:5px;
-            left:230px;
+            margin: 1vw auto;
             width: 20%;
             height: 20%;
             filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
         }
         .signinForm h1{
-            margin-top: 130px;
+            margin: .5vw auto;
             filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
         }
         .inputForm{
             display: flex;
             width: 75%;
             height: 10%;
-            margin: auto;
-            margin: 5% auto;
+            margin: .8vw auto;
             border-radius:50px;
             background-color: white;
             filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
@@ -83,7 +83,7 @@
             border-radius:50px;
         }
         .signInBtn{
-            width: 75%;
+            width: 70%;
             height: 10%;
             border-radius:12px;
             background-color: rgba(153, 112, 23, 0.75);
@@ -105,14 +105,14 @@
             width: 10%;
             height: 10%;
             filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, .5));
-            transition: .5s ease;
+            transition: .5s ease-in-out;
         }
         .back:hover{
             width: 11%;
             height: 11%;
         }
         .forgetPass{
-            margin-top: 100px;
+            margin: 3vw auto;
         }
     /**alert */
         .alert {
@@ -184,7 +184,7 @@
                 <input type="password" id="signinPass" name="signinPass" placeholder="Password" required>
             </div>
             <button type="submit" class="signInBtn move-up" onclick="signin(event)" >Sign In</button>
-            <a href="landingPage_index.php">
+            <a href="index.php">
                 <img class="back move-up" src="images/back-icon.png" alt="Back">
             </a>
             <p class="forgetPass">Can't remember your password? <a href="#" onclick="forgetPass(event)">Forget password</a></p>
