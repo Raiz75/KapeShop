@@ -338,7 +338,6 @@ if (!isset($_SESSION['user'])) {
             justify-content: space-between;
             text-align:center;
             min-height:54vw;
-            border:1px solid green;
         }
     /*sort panel*/
         .sortPannel{
@@ -349,7 +348,6 @@ if (!isset($_SESSION['user'])) {
             box-shadow: 0px 0px 5px grey;
             height: 80%;
             font-size: 1.5em;
-            border:1px solid red;
         }
         .sortPannel hr{
             width: 90%;
@@ -427,7 +425,6 @@ if (!isset($_SESSION['user'])) {
         .prodDisplayBox{
             width: 75%;
             position: relative;
-            border:1px solid red;
             padding-bottom: 5vw;
         }
         .prodDisplay{
